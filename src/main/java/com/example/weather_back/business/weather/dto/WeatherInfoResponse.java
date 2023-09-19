@@ -17,7 +17,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WeatherInfoResponse implements Serializable {
-    private Integer cityId;
+    private String cityName;
     @NotNull
     private BigDecimal temperature;
     @NotNull
