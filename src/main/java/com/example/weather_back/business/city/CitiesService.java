@@ -1,11 +1,11 @@
 package com.example.weather_back.business.city;
 
 import com.example.weather_back.business.city.dto.CityDto;
-import com.example.weather_back.business.weather.WeatherService;
 import com.example.weather_back.domain.city.City;
 import com.example.weather_back.domain.city.CityMapper;
 import com.example.weather_back.domain.city.CityService;
 import com.example.weather_back.domain.weatherinfo.WeatherInfoService;
+import com.example.weather_back.domain.weatherinfo.WeatherSchedulerService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +19,14 @@ public class CitiesService {
     private CityMapper cityMapper;
     @Resource
     private WeatherInfoService weatherInfoService;
+    @Resource
+    WeatherSchedulerService weatherSchedulerService;
 
     public void addCity(String cityName) {
         cityService.validateCityNameIsAvailable(cityName);
         City city = createAndSaveCity(cityName);
         weatherInfoService.fetchAndSaveWeatherDataByCityName(city);
+        weatherSchedulerService.scheduleWeatherTaskForCity(city);
     }
 
     public List<CityDto> getCities() {
