@@ -3,7 +3,6 @@ package com.example.weather_back.domain.weatherinfo;
 import com.example.weather_back.domain.city.City;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-
 import java.util.concurrent.*;
 
 @Service
