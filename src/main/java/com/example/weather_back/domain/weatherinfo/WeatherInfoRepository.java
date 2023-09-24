@@ -17,7 +17,4 @@ public interface WeatherInfoRepository extends JpaRepository<WeatherInfo, Intege
     @Query("DELETE FROM WeatherInfo w WHERE w.city.id = :cityId")
     void deleteByCityId(@Param("cityId") Integer cityId);
 
-
-
-
 }

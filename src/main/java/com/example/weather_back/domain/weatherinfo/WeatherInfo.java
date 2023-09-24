@@ -14,6 +14,7 @@ import java.time.Instant;
 @Entity
 @Table(name = "weather_info")
 public class WeatherInfo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

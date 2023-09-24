@@ -37,18 +37,17 @@ public class CitiesService {
         return cityMapper.toDtos(cities);
     }
 
+    public void deleteCityInfo(Integer cityId) {
+        weatherSchedulerService.cancelWeatherTaskForCity(cityId);
+        weatherInfoRepository.deleteByCityId(cityId);
+        cityService.deleteCity(cityId);
+    }
+
     private City createAndSaveCity(String cityName) {
         City city = new City();
         city.setName(cityName);
         cityService.saveCity(city);
         return city;
-    }
-
-    public void deleteCityInfo(Integer cityId) {
-        weatherSchedulerService.cancelWeatherTaskForCity(cityId);
-        weatherInfoRepository.deleteByCityId(cityId);
-        cityService.deleteCity(cityId);
-
     }
 }
 

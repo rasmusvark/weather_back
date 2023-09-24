@@ -14,7 +14,6 @@ public class WeatherSchedulerService {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);
     private final ConcurrentHashMap<Integer, ScheduledFuture<?>> scheduledTasks = new ConcurrentHashMap<>();
 
-
     public void scheduleWeatherTaskForCity(City city) {
         Runnable task = () -> weatherInfoService.fetchAndSaveWeatherDataByCityName(city);
 

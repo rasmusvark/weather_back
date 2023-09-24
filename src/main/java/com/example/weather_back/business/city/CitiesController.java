@@ -1,7 +1,6 @@
 package com.example.weather_back.business.city;
 
 import com.example.weather_back.business.city.dto.CityDto;
-import com.example.weather_back.domain.weatherinfo.WeatherInfoRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +12,12 @@ public class CitiesController {
 
     @Resource
     private CitiesService citiesService;
-    @Resource
-    private WeatherInfoRepository weatherInfoRepository;
 
 
     @PostMapping("/city")
-    @Operation(summary = "Uue linna lisamine.")
+    @Operation(
+            summary = "Uue linna lisamine.",
+            description = "Küsib esialgsed ilmaandmed ning salvestab need andmebaasi ning iga 15 minuti tagant salvestab uued andmed.")
     public void addCity(@RequestParam String cityName) {
         citiesService.addCity(cityName);
     }
@@ -32,11 +31,10 @@ public class CitiesController {
     }
 
     @DeleteMapping("/city")
-    @Operation(summary = "Kustutab andmebaasist valitud linna info")
+    @Operation(
+            summary = "Kustutab andmebaasist valitud linna info",
+            description = "Lõpetab andmete küsimise, kustutab kõik senised ilmaandmed ning kustutab linnade tabelist linna")
     public void deleteCityInfo(@RequestParam Integer cityId) {
         citiesService.deleteCityInfo(cityId);
-
-
-
     }
 }

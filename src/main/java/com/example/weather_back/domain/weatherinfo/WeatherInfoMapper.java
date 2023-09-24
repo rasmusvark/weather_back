@@ -15,6 +15,5 @@ public interface WeatherInfoMapper {
     @Mapping(source = "time", target = "dt")
     WeatherInfoResponse toWeatherInfoResponse(WeatherInfo weatherInfo);
 
-
     List<WeatherInfoResponse> toWeatherInfoResponses(List<WeatherInfo> weatherInfos);
 }
