@@ -9,8 +9,12 @@ import java.util.List;
 public interface WeatherInfoMapper {
 
     @Mapping(source = "city.name", target = "cityName")
-    @Mapping(source = "time", target = "time")
+    @Mapping(source = "temperature", target = "main.temperature")
+    @Mapping(source = "humidity", target = "main.humidity")
+    @Mapping(source = "windSpeed", target = "wind.windSpeed")
+    @Mapping(source = "time", target = "dt")
     WeatherInfoResponse toWeatherInfoResponse(WeatherInfo weatherInfo);
+
 
     List<WeatherInfoResponse> toWeatherInfoResponses(List<WeatherInfo> weatherInfos);
 }

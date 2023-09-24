@@ -18,6 +18,5 @@ public class WeatherController {
     @Operation(summary = "Toob andmebaasist valitud linna ilmainfo.")
     public List<WeatherInfoResponse> getCityWeatherInfo (@RequestParam Integer cityId) {
         return weatherService.getCityWeatherInfo(cityId);
-
     }
 }
