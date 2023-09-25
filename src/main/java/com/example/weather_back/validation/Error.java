@@ -5,7 +5,8 @@ import lombok.Getter;
 @Getter
 public enum Error {
 
-    CITY_ALREADY_EXISTS ("Selline linn on juba lisatud.",222);
+    CITY_ALREADY_EXISTS ("City is already added",222),
+    CITY_NAME_IS_INCORRECT("City name is incorrect",333);
 
     private final String message;
     private final int errorCode;

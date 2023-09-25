@@ -42,5 +42,6 @@ public class WeatherInfoService {
         weatherInfo.setTime(Instant.now());
         return weatherInfo;
     }
+
 }
 

@@ -4,9 +4,11 @@ import com.example.weather_back.business.city.dto.CityDto;
 import com.example.weather_back.domain.city.City;
 import com.example.weather_back.domain.city.CityMapper;
 import com.example.weather_back.domain.city.CityService;
+import com.example.weather_back.domain.city.CityValidationService;
 import com.example.weather_back.domain.weatherinfo.WeatherInfoRepository;
 import com.example.weather_back.domain.weatherinfo.WeatherInfoService;
 import com.example.weather_back.domain.weatherinfo.WeatherSchedulerService;
+import com.example.weather_back.validation.ValidationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +26,11 @@ public class CitiesService {
     private WeatherSchedulerService weatherSchedulerService;
     @Resource
     private WeatherInfoRepository weatherInfoRepository;
+    @Resource
+    private CityValidationService cityValidationService;
 
     public void addCity(String cityName) {
+        validateCityNameIsCorrect(cityName);
         cityService.validateCityNameIsAvailable(cityName);
         City city = createAndSaveCity(cityName);
         weatherInfoService.fetchAndSaveWeatherDataByCityName(city);
@@ -48,6 +53,11 @@ public class CitiesService {
         city.setName(cityName);
         cityService.saveCity(city);
         return city;
+    }
+
+    private void validateCityNameIsCorrect(String cityName) {
+        boolean cityNameIsIncorrect = cityValidationService.isCityNameIncorrect(cityName);
+        ValidationService.validateIsCityNameIncorrect(cityNameIsIncorrect);
     }
 }
 
