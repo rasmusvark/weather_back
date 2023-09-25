@@ -6,6 +6,8 @@ import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -37,7 +39,7 @@ public class WeatherInfoService {
         weatherInfo.setTemperature(response.getMain().getTemperature());
         weatherInfo.setHumidity(response.getMain().getHumidity());
         weatherInfo.setWindSpeed(response.getWind().getWindSpeed());
-        weatherInfo.setTime(TimeConverter.getEstonianTimeZoneInstant());
+        weatherInfo.setTime(Instant.now());
         return weatherInfo;
     }
 }
