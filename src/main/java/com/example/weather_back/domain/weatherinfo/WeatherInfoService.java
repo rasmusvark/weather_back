@@ -1,7 +1,6 @@
 package com.example.weather_back.domain.weatherinfo;
 import com.example.weather_back.business.weather.dto.WeatherInfoResponse;
 import com.example.weather_back.domain.city.City;
-import com.example.weather_back.util.TimeConverter;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
